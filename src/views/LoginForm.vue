@@ -41,8 +41,8 @@ export default {
 
     return {
       onSubmit,
-      email: email,
-      emailError: emailError
+      email,
+      emailError
     }
   }
 }
