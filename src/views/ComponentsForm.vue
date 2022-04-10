@@ -1,7 +1,11 @@
 <template>
   <div>
     <h1>Create an Event</h1>
+<<<<<<< HEAD
     <form @submit="submit">
+=======
+    <form @submit.prevent="submit">
+>>>>>>> lesson5/start
       <BaseSelect
         label="Select a category"
         :options="categories"
@@ -12,35 +16,56 @@
       <h3>Name & describe your event</h3>
       <BaseInput
         label="Title"
+<<<<<<< HEAD
         v-model="title"
         :error="errors.title"
         type="text"
+=======
+        type="text"
+        v-model="title"
+        :error="errors.title"
+>>>>>>> lesson5/start
       />
 
       <BaseInput
         label="Description"
+<<<<<<< HEAD
         v-model="description"
         :error="errors.description"
+=======
+>>>>>>> lesson5/start
         type="text"
+        v-model="description"
+        :error="errors.description"
       />
 
       <h3>Where is your event?</h3>
       <BaseInput
         label="Location"
+<<<<<<< HEAD
         v-model="location"
         :error="errors.location"
+=======
+>>>>>>> lesson5/start
         type="text"
+        v-model="location"
+        :error="errors.location"
       />
 
       <h3>Are pets allowed?</h3>
       <BaseRadioGroup
+<<<<<<< HEAD
         v-model="pets"
         :error="errors.pets"
+=======
+>>>>>>> lesson5/start
         name="pets"
         :options="[
           { value: 1, label: 'Yes' },
           { value: 0, label: 'No' }
         ]"
+        v-model="pets"
+        :error="errors.pets"
       />
 
       <h3>Extras</h3>
@@ -75,6 +100,10 @@
 
 <script>
 import { useField, useForm } from 'vee-validate'
+<<<<<<< HEAD
+=======
+import { object, string, number, boolean } from 'yup'
+>>>>>>> lesson5/start
 
 export default {
   data () {
@@ -91,6 +120,7 @@ export default {
     }
   },
   setup () {
+<<<<<<< HEAD
     const required = value => {
       const requiredMessage = 'This field is required'
       if (value === undefined || value === null) return requiredMessage
@@ -131,6 +161,22 @@ export default {
       validationSchema,
       initialErrors: {
         psts: 1,
+=======
+    const validationSchema = object({
+      category: string().required(),
+      title: string().required('A cool title is required').min(3),
+      description: string().required(),
+      location: string(),
+      pets: number(),
+      catering: boolean(),
+      music: boolean()
+    })
+
+    const { handleSubmit, errors } = useForm({
+      validationSchema,
+      initialValues: {
+        pets: 1,
+>>>>>>> lesson5/start
         catering: false,
         music: false
       }
